@@ -1,0 +1,34 @@
+#not all test files seem to be here!!!
+xml-types.sql s4-doc.sql-out
+xml-types-code.sql
+xml-qname-schema.sql
+xml-qname-code.sql
+#xml-qname-test.sql
+xml-attr-schema.sql
+xml-attr-code.sql
+xml-attr-test.sql
+xml-char.sql
+xml-tag-schema.sql
+xml-tag-code.sql
+xml-kind-schema.sql
+xml-node-schema.sql
+xml-doc-schema.sql
+xml-import-schema.sql
+xml-import-schema-test.sql
+xml-kind-code.sql
+xml-kind-test.sql
+xml-node-code.sql
+xml-node-test.sql
+xml-doc-code.sql
+xml-html-data.sql
+xml-import-code.sql
+xml-svg.sql
+css-kind-schema.sql
+css-kind-code.sql
+xml-import-code-test.sql
+simple.html xml-import-code.sql-out
+xml-doc-simple-data.sql css-kind-code.sql-out
+fancy.html xml-import-code.sql-out
+xml-doc-fancy-data.sql
+xml-doc-test.sql
+s5-xml.sql
