@@ -59,10 +59,10 @@ Ans: Why not??
 
 /*
 
-Obsoleted by wicci_lang_responses(lang_, '_doctype', )
+Obsoleted by wicci_lang_responses(lang, '_doctype', )
 
 CREATE TABLE IF NOT EXISTS xml_lang_doctypes (
-	lang_ doc_lang_name_refs
+	lang doc_lang_name_refs
 		PRIMARY KEY REFERENCES doc_lang_name_rows,
 	type_ doc_node_kind_refs
 		NOT NULL REFERENCES xml_literal_kind_rows

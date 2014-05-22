@@ -81,14 +81,14 @@ CREATE TABLE IF NOT EXISTS xml_tag_rows (
 	ref xml_tag_refs PRIMARY KEY,
 	name_ xml_tag_name_refs
 		NOT NULL REFERENCES xml_tag_name_rows,
-	lang_ doc_lang_name_refs
+	lang doc_lang_name_refs
 		NOT NULL REFERENCES doc_lang_name_rows,
 	ns_ page_uri_refs DEFAULT page_uri_nil()
 		NOT NULL REFERENCES page_uri_rows,
 	env env_refs DEFAULT env_nil()
 		NOT NULL REFERENCES env_rows,
-	UNIQUE(name_, lang_, ns_),
-	CHECK( is_nil(env) OR env_doc_lang(env) = lang_),
+	UNIQUE(name_, lang, ns_),
+	CHECK( is_nil(env) OR env_doc_lang(env) = lang),
 	CHECK(
 		is_nil(env) AND NOT is_nil(ns_)
 		OR try_env_namespace_uri(env) = ns_
@@ -106,7 +106,7 @@ language should all have environments;
 tags discovered during document import must be
 in some namespace and will NOT have an env;
 UNIQUE(non-nil env, name_)';
-COMMENT ON COLUMN xml_tag_rows.lang_ IS
+COMMENT ON COLUMN xml_tag_rows.lang IS
 'The document language of documents which use
 this tag.';
 COMMENT ON COLUMN xml_tag_rows.ns_ IS

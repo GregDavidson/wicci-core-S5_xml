@@ -21,9 +21,10 @@ SELECT set_file('xml-kind-schema.sql', '$Id');
 -- Machinery for (2) is in xml-types.sql, but is it reasonable
 -- to separate xml languages from other languages??
 
+SELECT declare_doc_lang_family('css', 'text');
 SELECT declare_doc_lang_family('xml', 'text');
 SELECT declare_doc_lang_family('svg', 'xml');
-SELECT declare_doc_lang_family('ajax', 'xml');
+SELECT declare_doc_lang_family('ajax', 'xml'); -- NOT REALLY!!!
 SELECT declare_doc_lang_family('html', 'xml');
 SELECT declare_doc_lang_family('xhtml', 'html');
 SELECT declare_doc_lang_family('xhtml-strict', 'xhtml');

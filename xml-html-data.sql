@@ -40,7 +40,7 @@ SELECT xml_literal_kind_rows_ref( 'svg-doctype', xml_literal_kind( get_text(
 
 DELETE FROM xml_lang_doctypes;
 
-INSERT INTO xml_lang_doctypes(lang_, type_) VALUES
+INSERT INTO xml_lang_doctypes(lang, type_) VALUES
 	('xhtml', xml_literal_kind_rows_ref('xhtml-doctype')),
 	('html', xml_literal_kind_rows_ref('html-doctype')),
 -- ('xhtml-strict', xml_literal_kind_rows_ref('xhtml-1.0-strict-doctype')),
@@ -51,7 +51,7 @@ INSERT INTO xml_lang_doctypes(lang_, type_) VALUES
 CREATE OR REPLACE
 FUNCTION xml_lang_doctype(doc_lang_name_refs)
 RETURNS doc_node_kind_refs AS $$
-		SELECT type_ FROM xml_lang_doctypes WHERE lang_ = $1
+		SELECT type_ FROM xml_lang_doctypes WHERE lang = $1
 $$ LANGUAGE sql;
 
 */

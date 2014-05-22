@@ -251,7 +251,7 @@ $$ LANGUAGE sql;
 -- 	page_uri_refs = page_uri_nil() 
 -- ) RETURNS xml_tag_refs AS $$
 -- 	SELECT ref FROM xml_tags_envs
--- 	WHERE name_ = $1 AND lang_ = $2 AND ns_ = $3
+-- 	WHERE name_ = $1 AND lang = $2 AND ns_ = $3
 -- $$ LANGUAGE sql STRICT;
 
 -- CREATE OR REPLACE
