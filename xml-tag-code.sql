@@ -114,7 +114,7 @@ BEGIN
 		WHERE name_ = $1 AND ns_ = $2;
 		IF FOUND THEN RETURN row_.ref; END IF;
 		IF kilroy_was_here THEN
-			RAISE EXCEPTION '% % % % looping!', this, $1, $2;
+			RAISE EXCEPTION '% % % looping!', this, $1, $2;
 		END IF;
 		kilroy_was_here := true;
 		BEGIN
