@@ -397,7 +397,7 @@ CREATE OR REPLACE FUNCTION try_new_xml_id_kind_tree(
 ) RETURNS xml_tree_returns AS $$
 	SELECT xml_tree_return(
 		new_node,
-		CASE WHEN $1 = '' THEN id_pairs
+		CASE WHEN is_nil($1) THEN id_pairs
 		ELSE xml_id_node_pair($1, new_node) || id_pairs END,
 		($2).ns_pairs || ns_pairs
 	) FROM new_xml_tree_node(
@@ -438,15 +438,17 @@ CREATE OR REPLACE FUNCTION xml_tree(
 	_id text, xml_kind_returns,
 	VARIADIC xml_tree_returns[] = '{}'
 ) RETURNS xml_tree_returns AS $$
-	SELECT new_xml_id_kind_tree( this, $1, $2, CASE ($2).tag
+	SELECT new_xml_id_kind_tree( this, $1, $2, children ) FROM
+  COALESCE( CASE ($2).tag
 		WHEN html_tag('head') THEN
 			$3 || xml_meta('html_head_extra')
 		WHEN html_tag('body') THEN
 			xml_meta('html_body_top') || $3 || xml_meta('html_body_extra')
 		ELSE $3
-	END ) FROM debug_enter(
+	END ) children,
+	debug_enter(
 		'xml_tree(text, xml_kind_returns,xml_tree_returns[])',
-		show_ref(($2).kind), 'node kind'
+		show_ref( ($2).kind ), 'node kind'
 	) this
 $$ LANGUAGE sql;
 

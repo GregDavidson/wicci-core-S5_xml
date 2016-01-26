@@ -8,4 +8,3 @@ SELECT s0_lib.set_schema_path(
 );
 
 SELECT ensure_schema_ready();
-

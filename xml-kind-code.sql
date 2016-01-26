@@ -278,7 +278,7 @@ SELECT  type_class_op_method(
 CREATE OR REPLACE
 FUNCTION try_xml_root_element_kind(xml_tag_refs, xml_attr_refs[]='{}') 
 RETURNS doc_node_kind_refs AS $$
-	Select ref FROM xml_root_element_kind_rows
+	SELECT ref FROM xml_root_element_kind_rows
 	WHERE $1 = tag AND $2 = attrs
 $$ LANGUAGE sql STRICT;
 
